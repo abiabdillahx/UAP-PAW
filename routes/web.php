@@ -27,3 +27,5 @@ require __DIR__.'/auth.php';
 Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () {
     Route::resource('/articles', ArticleController::class);
 }) ;
+
+Route::get('/articles', [ArticleController::class, 'publicIndex'])->name('article.public');

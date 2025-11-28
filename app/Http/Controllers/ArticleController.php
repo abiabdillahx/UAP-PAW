@@ -72,4 +72,10 @@ class ArticleController extends Controller
         $article->delete();
         return redirect()->route('admin.articles.index');
     }
+
+    public function publicIndex()
+    {
+        $articles = Article::where('status', publish)->latest()->get();
+        return view('articles.public-index', compact('articles'));
+    }
 }
